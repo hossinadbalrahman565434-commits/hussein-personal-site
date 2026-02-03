@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>إرسال بيانات إلى واتس آب</title>
+<style>
+  body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+  }
+  button {
+    background: #25D366;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h2>إرسال البيانات عبر واتس آب</h2>
+
+<input type="email" id="email" placeholder="البريد الإلكتروني">
+<input type="text" id="note" placeholder="البيان / الرمز">
+<button onclick="sendWhatsApp()">إرسال إلى واتس آب</button>
+
+<script>
+function sendWhatsApp() {
+  const email = document.getElementById('email').value.trim();
+  const note  = document.getElementById('note').value.trim();
+
+  if (!email || !note) {
+    alert('الرجاء تعبئة جميع الحقول');
+    return;
+  }
+
+  const phone = '967782945962'; // اكتب رقمك بدون +
+  const message = `البريد: ${email}\nالبيان: ${note}`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
